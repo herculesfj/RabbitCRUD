@@ -311,7 +311,7 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👥 Autores
 
-- @herculesfj - *Desenvolvimento inicial* - [seu-github](https://github.com/seu-usuario)
+- Hercules Freitas - *Desenvolvimento inicial* - [herculesfj](https://github.com/herculesfj)
 
 ## 🙏 Agradecimentos
 
