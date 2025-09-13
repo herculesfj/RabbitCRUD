@@ -1,0 +1,6 @@
+Flask==2.2.5
+pika==1.3.1
+pymongo==4.5.0
+pydantic==1.10.9
+gunicorn==20.1.0
+flask-typing==1.0.1
