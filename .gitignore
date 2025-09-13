@@ -1,0 +1,73 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+.env
+.venv
+venv/
+ENV/
+env/
+*.sqlite3
+
+# =========================
+# Logs & Debug
+# =========================
+*.log
+*.out
+*.err
+logs/
+*.pid
+
+# =========================
+# IDEs & Editors
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# =========================
+# Jupyter / Notebooks
+# =========================
+.ipynb_checkpoints
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Docker
+# =========================
+# Volumes & containers
+data/
+tmp/
+*.pid
+*.sock
+
+# Ignorar build intermediário
+**/Dockerfile~
+**/docker-compose.override.yml
+.docker/
+
+# =========================
+# Project Specific
+# =========================
+# Dash cache
+.cache/
+__cache__/
+
+# MongoDB dumps
+dump/
+
+# RabbitMQ data
+rabbitmq/
