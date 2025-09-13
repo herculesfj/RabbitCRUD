@@ -1,0 +1,7 @@
+flask
+pymongo
+pika
+dash
+plotly
+requests
+pytest

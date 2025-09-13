@@ -1,5 +1,6 @@
 import pika
 import json
+from bson import ObjectId
 from config import RABBITMQ_HOST, QUEUE_NAME
 
 class Producer:
@@ -12,7 +13,20 @@ class Producer:
         self.channel.queue_declare(queue=self.queue, durable=True)
 
     def publish(self, action: str, data: dict):
-        message = {"action": action, "data": data}
+        # Converter ObjectId para string antes de serializar
+        def convert_objectid(obj):
+            if isinstance(obj, ObjectId):
+                return str(obj)
+            elif isinstance(obj, dict):
+                return {k: convert_objectid(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_objectid(item) for item in obj]
+            return obj
+        
+        # Converter ObjectIds para strings
+        clean_data = convert_objectid(data)
+        message = {"action": action, "data": clean_data}
+        
         self.channel.basic_publish(
             exchange='',
             routing_key=self.queue,

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.user_service import UserService
+from services.user_services import UserService
 from models.user_model import User
 from pydantic import ValidationError
 
@@ -32,3 +32,12 @@ def update_user(name):
 def delete_user(name):
     deleted = service.delete_user_by_name(name)
     return jsonify({"deleted": deleted}), 200
+
+@bp.route("/clear-all", methods=["DELETE"])
+def clear_all_users():
+    """Endpoint para limpar todos os usuários do banco"""
+    try:
+        deleted_count = service.clear_all_users()
+        return jsonify({"deleted": deleted_count}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

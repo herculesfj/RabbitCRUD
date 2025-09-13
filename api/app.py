@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from controllers.users_controller import bp as users_bp
+from controllers.user_controller import bp as users_bp
 import logging
 from config import MONGO_URI, RABBITMQ_HOST
 

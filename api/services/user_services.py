@@ -26,3 +26,9 @@ class UserService:
         deleted = self.repo.delete_by_name(name)
         self.producer.publish("delete", {"name": name})
         return deleted
+
+    def clear_all_users(self):
+        """Remove todos os usuários do banco"""
+        deleted_count = self.repo.clear_all()
+        self.producer.publish("clear_all", {"deleted_count": deleted_count})
+        return deleted_count

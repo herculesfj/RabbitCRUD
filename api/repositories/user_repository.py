@@ -14,7 +14,12 @@ class UserRepository:
         return str(res.inserted_id)
 
     def read_all(self) -> List[Dict[str, Any]]:
-        docs = list(self.collection.find({}, {"_id": 0}))
+        docs = list(self.collection.find({}))
+        # Converter ObjectId para string
+        for doc in docs:
+            if "_id" in doc:
+                doc["id"] = str(doc["_id"])
+                del doc["_id"]
         return docs
 
     def read_by_id(self, _id: str) -> Optional[Dict[str, Any]]:
@@ -31,4 +36,9 @@ class UserRepository:
 
     def delete_by_name(self, name: str) -> int:
         res = self.collection.delete_one({"name": name})
+        return res.deleted_count
+
+    def clear_all(self) -> int:
+        """Remove todos os documentos da coleção"""
+        res = self.collection.delete_many({})
         return res.deleted_count
